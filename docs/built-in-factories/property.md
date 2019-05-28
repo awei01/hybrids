@@ -20,11 +20,20 @@ const MyElement = {
 
 Property factory holds a property value with the type transform with fallback to the corresponding attribute value.
 
-The [translation](../core-concepts/translation.md) has two rules, which use property factory. You can set property value as primitive or an object without `get` and `set` methods to define it using property factory.
+### Translation
+
+The [translation](../core-concepts/translation.md) allows using property factory implicitly. You can set property as a primitive or an array to create descriptor by the property factory under the hood:
+
+```javascript
+const MyElement = {
+  value: 0,
+  items: [],
+};
+```
 
 ## Transform
 
-`property` uses a transform function, which ensures the strict type of the value set by a property or an attribute. 
+`property` factory uses a transform function, which ensures the strict type of the value set by a property or an attribute.
 
 The type of the `defaultValue` is used to detect transform function. For example, when `defaultValue` is set to `"text"`, `String` function is used. If the `defaultValue` is a function, it is called when a property value is set.
 
