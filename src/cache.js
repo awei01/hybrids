@@ -100,8 +100,8 @@ export function get(target, key, getter) {
   return entry.value;
 }
 
-export function set(target, key, setter, value) {
-  if (context) {
+export function set(target, key, setter, value, force) {
+  if (context && !force) {
     context = null;
     throw Error(`Try to set '${key}' of '${stringifyElement(target)}' in get call`);
   }
